@@ -73,31 +73,31 @@ class SupremeParticleSystem {
 
 
 
-  setupCardInteractions() {
-    const cards = document.querySelectorAll('.professional-card');
-    
-    cards.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        this.particles.forEach(particle => {
-          particle.element.style.animationPlayState = 'paused';
-          particle.element.style.transform = 'scale(2)';
-          particle.element.style.opacity = '1';
-          particle.element.style.filter = 'blur(1px)';
-        });
-      });
+setupCardInteractions() {
+  if (window.innerWidth < 768) return;
 
+  const cards = document.querySelectorAll('.professional-card');
 
-
-      card.addEventListener('mouseleave', () => {
-        this.particles.forEach(particle => {
-          particle.element.style.animationPlayState = 'running';
-          particle.element.style.transform = '';
-          particle.element.style.opacity = '';
-          particle.element.style.filter = '';
-        });
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      this.particles.forEach(particle => {
+        particle.element.style.animationPlayState = 'paused';
+        particle.element.style.transform = 'scale(2)';
+        particle.element.style.opacity = '1';
+        particle.element.style.filter = 'blur(1px)';
       });
     });
-  }
+
+    card.addEventListener('mouseleave', () => {
+      this.particles.forEach(particle => {
+        particle.element.style.animationPlayState = 'running';
+        particle.element.style.transform = '';
+        particle.element.style.opacity = '';
+        particle.element.style.filter = '';
+      });
+    });
+  });
+}
 
 
 

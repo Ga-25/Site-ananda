@@ -292,11 +292,12 @@ body {
 
 .card-img {
   position: absolute;
-  top: 205px;
-  right: -15px; /* joga para fora do card */
+  top: -30px;
+  right: -20px;
   width: 70px;
   transform: rotate(-12deg);
   z-index: 3;
+  pointer-events: none;
 }
 
 
@@ -879,39 +880,14 @@ body {
 
 
 
-/* ===== ANIMAÇÕES AVANÇADAS ===== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 
 
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 
-      0 20px 60px rgba(0,0,0,0.4),
-      0 0 0 1px rgba(255,255,255,0.05);
-  }
-  50% {
-    box-shadow: 
-      0 25px 80px rgba(0,0,0,0.5),
-      0 0 0 1px rgba(255,255,255,0.1),
-      0 0 30px rgba(138,46,79,0.2);
-  }
-}
+
 
 
 
 /* Aplicação das animações */
-.professional-card {
-  animation: fadeInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both,
-             pulseGlow 4s ease-in-out infinite;
-}
 
 
 

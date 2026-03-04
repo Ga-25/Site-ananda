@@ -1,32 +1,4 @@
-// Animações suaves ao scroll
-document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.service-card');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    });
-    
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'all 0.6s ease';
-        observer.observe(card);
-    });
-    
-    // Efeito nos botões
-    const buttons = document.querySelectorAll('.cta-button');
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Aqui você pode adicionar integração com WhatsApp ou formulários
-            console.log('Botão clicado:', this.textContent);
-        });
-    });
-});
+
 
 
 // Sistema Supremo de Partículas Inteligentes
@@ -74,7 +46,8 @@ class SupremeParticleSystem {
 
 
 setupCardInteractions() {
-  if (window.innerWidth < 768) return;
+
+  if (window.innerWidth < 768) return; // 🔥 desativa no mobile
 
   const cards = document.querySelectorAll('.professional-card');
 
@@ -82,18 +55,12 @@ setupCardInteractions() {
     card.addEventListener('mouseenter', () => {
       this.particles.forEach(particle => {
         particle.element.style.animationPlayState = 'paused';
-        particle.element.style.transform = 'scale(2)';
-        particle.element.style.opacity = '1';
-        particle.element.style.filter = 'blur(1px)';
       });
     });
 
     card.addEventListener('mouseleave', () => {
       this.particles.forEach(particle => {
         particle.element.style.animationPlayState = 'running';
-        particle.element.style.transform = '';
-        particle.element.style.opacity = '';
-        particle.element.style.filter = '';
       });
     });
   });

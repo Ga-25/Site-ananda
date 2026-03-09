@@ -126,9 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
   // Smooth scroll para CTAs
-  document.querySelectorAll('.cta-button').forEach(button => {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
       
       // Efeito de clique visual
       button.style.transform = 'scale(0.95)';

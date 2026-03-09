@@ -389,6 +389,9 @@ body {
   position: relative;
   overflow: hidden;
    width: 100%;
+     text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 
 

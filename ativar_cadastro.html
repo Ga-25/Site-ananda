@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1498881158333101');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1498881158333101&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+   
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ativar Cadastro</title>
+  <meta name="color-scheme" content="dark light" />
+  <style>
+    :root{
+      --bg:#0f1115;
+      --panel:#171a21;
+      --soft:#232838;
+      --txt:#e7e9ee;
+      --muted:#a9b0c0;
+      --primary:#3b82f6;
+      --primary-2:#2563eb;
+      --success:#22c55e;
+      --warn:#f59e0b;
+      --danger:#ef4444;
+      --glow:0 15px 40px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+      background: radial-gradient(1200px 800px at 20% -10%, #1b2440 0%, transparent 60%),
+                  radial-gradient(1200px 800px at 110% 110%, #262036 0%, transparent 40%),
+                  var(--bg);
+      color:var(--txt);
+      display:flex;align-items:center;justify-content:center;
+      padding:24px;
+    }
+    .wrap{
+      width:100%;
+      max-width:720px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), transparent 20%) , var(--panel);
+      border:1px solid rgba(255,255,255,.06);
+      box-shadow:var(--glow);
+      padding:28px;
+      border-radius:var(--radius);
+      position:relative;
+      overflow:hidden;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;margin-bottom:12px;
+      font-weight:700;letter-spacing:.3px
+    }
+    .brand .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(45deg,var(--primary),#8b5cf6);box-shadow:0 0 18px rgba(59,130,246,.6)}
+    .title{
+      margin:0 0 16px 0;
+      font-size:1.7rem;
+      line-height:1.2;
+    }
+    .sub{color:var(--muted);margin:0 0 22px 0}
+    .progress{
+      background:#111420;
+      border:1px solid rgba(255,255,255,.08);
+      height:12px;border-radius:999px;
+      overflow:hidden;position:relative;
+    }
+    .progress .fill{
+      position:absolute;left:0;top:0;bottom:0;width:0%;
+      background:linear-gradient(90deg, var(--warn), #fb923c);
+      transition:width .35s ease, background .35s ease;
+    }
+    .progress-label{display:flex;justify-content:space-between;margin:8px 2px 18px 2px;color:var(--muted);font-size:.9rem}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .full{grid-column:1/-1}
+    label{font-size:.95rem;margin:2px 0 6px 2px;display:block;color:#cbd5e1}
+    input{
+      width:100%;background:#0f1320;
+      border:1px solid rgba(255,255,255,.08);
+      padding:14px 12px;border-radius:12px;color:var(--txt);
+      outline:none;transition:border .2s, transform .15s;
+    }
+    input:focus{border-color:var(--primary);transform:translateY(-1px)}
+    input.valid{border-color:rgba(34,197,94,.7)}
+    input.invalid{border-color:rgba(239,68,68,.8);background:#1b0f12}
+    .err{display:none;color:#fecaca;font-size:.85rem;margin-top:6px}
+    .row{display:flex;flex-direction:column}
+    .btn{
+      grid-column:1/-1;
+      background:linear-gradient(45deg,var(--primary),var(--primary-2));
+      border:none;color:white;font-weight:700;
+      padding:14px;border-radius:14px;cursor:pointer;
+      transition:transform .1s ease, opacity .2s ease, box-shadow .2s ease;
+      box-shadow:0 10px 28px rgba(59,130,246,.35);
+    }
+    .btn:hover{opacity:.95}
+    .btn:active{transform:translateY(1px)}
+    .btn.loading{position:relative;color:transparent;pointer-events:none}
+    .btn.loading:after{
+      content:"";position:absolute;inset:0;margin:auto;
+      width:20px;height:20px;border-radius:50%;
+      border:3px solid rgba(255,255,255,.25);border-top-color:#fff;
+      animation:spin 1s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .check{
+      display:none;justify-content:center;align-items:center;
+      gap:8px;margin:14px 0 0 0;color:var(--success);font-weight:700
+    }
+    .check.show{display:flex}
+    .sec{
+      margin-top:16px;color:var(--muted);text-align:center;font-size:.95rem
+    }
+    .notice{
+      position:fixed;top:20px;right:20px;z-index:9999;
+      background:#111826;color:white;padding:14px 16px;border-radius:12px;
+      border:1px solid rgba(255,255,255,.1);box-shadow:var(--glow);
+      animation:slideIn .25s ease both;max-width:320px;font-weight:600
+    }
+    @keyframes slideIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+    @keyframes slideOut{to{opacity:0;transform:translateX(20px)}}
+    /* A/B in-app counter */
+    .ab-counter{
+      grid-column:1/-1;
+      background:rgba(239,68,68,.08);
+      border:1px solid rgba(239,68,68,.35);
+      padding:14px;border-radius:14px;text-align:center;margin-bottom:6px
+    }
+    .ab-counter strong{color:#fecaca}
+    /* Exit / idle popup */
+    .pop{
+      position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+      background:rgba(0,0,0,.55);backdrop-filter:blur(3px);z-index:9998
+    }
+    .pop-card{
+      width:min(480px,92vw);background:var(--panel);border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;padding:20px;box-shadow:var(--glow);text-align:center
+    }
+    .pop h3{margin:0 0 8px 0}
+    .pop p{color:var(--muted);margin:0 0 14px 0}
+    .pop .actions{display:flex;gap:10px;justify-content:center}
+    .pop .actions button{padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+    .pop .final{background:linear-gradient(45deg,#ef4444,#b91c1c);color:white}
+    .pop .close{background:#0f1320;color:#e5e7eb;border:1px solid rgba(255,255,255,.08)}
+    @media (max-width:640px){
+      form{grid-template-columns:1fr}
+      .title{font-size:1.5rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> </div>
+    <h1 class="title">Complete seu cadastro</h1>
+    <p class="sub">Preencha seus dados para ativar.</p>
+
+    <div class="progress" aria-hidden="true">
+      <div class="fill" id="progress-fill"></div>
+    </div>
+    <div class="progress-label"><span>Progresso</span><span id="progress-percent">0%</span></div>
+
+    <form id="registrationForm" novalidate>
+      <div class="row full">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome" class="form-input" placeholder="Ex.: Maria Silva" required autocomplete="name" />
+        <div id="nome-error" class="err"></div>
+      </div>
+
+      <div class="row">
+        <label for="email">Email para contato</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="voce@email.com" required autocomplete="email" />
+        <div id="email-error" class="err"></div>
+      </div>
+
+      <div class="row">
+        <label for="whatsapp">WhatsApp</label>
+        <input type="tel" id="whatsapp" name="whatsapp" class="form-input" placeholder="(11) 99999-9999" required autocomplete="tel" />
+        <div id="whatsapp-error" class="err"></div>
+      </div>
+
+      <input type="hidden" id="transacao" value="N/A" />
+
+      <div id="ab-counter-slot" class="full"></div>
+
+      <button id="submitBtn" class="btn" type="submit">Ativar Cadastro</button>
+    </form>
+
+    <div id="successCheckmark" class="check">✅ Cadastro ativado!</div>
+    <div class="sec">🔒 Seus dados estão protegidos e criptografados</div>
+  </div>
+
+  <script>
+    // CONFIG
+    const CONFIG = {
+      whatsappNumber: '557799583021', // altere para seu número
+      pixelIds: '1498881158333101',  // seu Pixel ID
+      successPage: 'cadastro_confirmado.html'
+    };
+
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', () => {
+      const eventId = 'evt_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
+
+  // Pixel já está carregado no <head> (evitamos re-init para não duplicar PageView).
+  if (typeof fbq === 'undefined') {
+    console.warn('Meta Pixel não carregado ainda.');
+  }
+
+      initForm();
+      initProgressBar();
+      initValidation();
+      initABTest();
+      initAbandonmentRecovery();
+      console.log('🚀 Página de cadastro carregada');
+      console.log('📊 Pixel IDs:', CONFIG.pixelIds);
+      console.log('📱 WhatsApp:', CONFIG.whatsappNumber);
+    });
+
+    function initForm(){
+      const form = document.getElementById('registrationForm');
+      form.addEventListener('submit', handleFormSubmit);
+
+      const inputs = form.querySelectorAll('.form-input');
+      inputs.forEach((input) => {
+        input.addEventListener('input', () => { validateField(input); updateProgress(); maybeInitiateCheckout(); });
+        input.addEventListener('focus', () => { input.style.transform='translateY(-1px)'; });
+        input.addEventListener('blur',  () => { input.style.transform=''; });
+      });
+    }
+
+
+
+function getCookie(name){
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+    let initiatedCheckout = false;
+    function maybeInitiateCheckout(){
+      if(!initiatedCheckout && typeof fbq!=='undefined'){
+        const filled = Array.from(document.querySelectorAll('.form-input')).some(i=>i.value.trim()!=='');
+        if(filled){
+          initiatedCheckout = true;
+          fbq('track', 'InitiateCheckout', {content_name:' Registration'});
+        }
+      }
+    }
+
+    function initProgressBar(){ setTimeout(updateProgress, 300); }
+
+    function updateProgress(){
+      const inputs = document.querySelectorAll('.form-input[required]');
+      let ok = 0;
+      inputs.forEach(i => {
+        if(i.value.trim()!=='' && !i.classList.contains('invalid')) ok++;
+      });
+      const pct = Math.round((ok/inputs.length)*100);
+      const fill = document.getElementById('progress-fill');
+      const label = document.getElementById('progress-percent');
+      fill.style.width = pct + '%';
+      label.textContent = pct + '%';
+      if(pct===100){ fill.style.background='linear-gradient(90deg, #22c55e, #16a34a)'; }
+      else if(pct>=66){ fill.style.background='linear-gradient(90deg, #3b82f6, #2563eb)'; }
+      else { fill.style.background='linear-gradient(90deg, #f59e0b, #fb923c)'; }
+    }
+
+    function initValidation(){
+      // Máscara para WhatsApp (BR)
+      const w = document.getElementById('whatsapp');
+      w.addEventListener('input', (e)=>{
+        let v = e.target.value.replace(/\D/g,'');
+        if (v.length>11) v = v.slice(0,11);
+        if (v.length>=11)      v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+        else if (v.length>=7)  v = v.replace(/^(\d{2})(\d{4})(\d{0,4})$/, '($1) $2-$3');
+        else if (v.length>=3)  v = v.replace(/^(\d{2})(\d{0,5})$/, '($1) $2');
+        else if (v.length>=1)  v = v.replace(/^(\d{0,2})$/, '($1');
+        e.target.value = v;
+      });
+    }
+
+    function validateField(input){
+      const value = input.value.trim();
+      let valid = true;
+      let msg = '';
+      if(input.name==='nome'){
+        if(value.length<2){ valid=false; msg='Nome deve ter pelo menos 2 caracteres'; }
+        else if(!/^[a-zA-ZÀ-ÿ\s]+$/.test(value)){ valid=false; msg='Use apenas letras'; }
+        else if(value.split(' ').length<2){ valid=false; msg='Digite nome e sobrenome'; }
+      }
+      if(input.name==='email'){
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!re.test(value)){ valid=false; msg='Digite um email válido'; }
+      }
+      if(input.name==='whatsapp'){
+        const re = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
+        if(!re.test(value)){ valid=false; msg='Formato válido: (11) 99999-9999'; }
+      }
+      input.classList.remove('valid','invalid');
+      if(value!==''){ input.classList.add(valid?'valid':'invalid'); }
+      const err = document.getElementById(input.name+'-error');
+      if(err){ err.textContent = msg; err.style.display = msg ? 'block' : 'none'; }
+      return valid;
+    }
+
+async function handleFormSubmit(e){
+  e.preventDefault();
+
+  if(!checkSubmissionRate()) return;
+
+  const inputs = document.querySelectorAll('.form-input[required]');
+  let ok = true;
+  inputs.forEach(i=>{ if(!validateField(i) || i.value.trim()==='') ok = false; });
+  if(!ok){ notify('Por favor, corrija os erros no formulário.', 'error'); return; }
+
+  const btn = document.getElementById('submitBtn');
+  btn.classList.add('loading'); btn.disabled = true;
+
+  const data = {
+    nome: document.getElementById('nome').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    whatsapp: document.getElementById('whatsapp').value.trim(),
+    transacao: document.getElementById('transacao').value.trim() || 'N/A',
+    timestamp: new Date().toISOString(),
+    source: 'Registration'
+  };
+
+    // ✅ Salva no localStorage para a página de confirmação e para CAPI
+  try {
+    localStorage.setItem("user_name", data.nome);
+    localStorage.setItem("user_email", data.email);
+    localStorage.setItem("user_phone", data.whatsapp);
+    localStorage.setItem("transacao", data.transacao);
+    localStorage.setItem("_fbp", getCookie("_fbp") || "");
+    localStorage.setItem("_fbc", getCookie("_fbc") || "");
+  } catch(e){}
+
+  // event_id para deduplicação
+  const regEventId = 'reg_' + Date.now() + '_' + Math.random().toString(36).slice(2,9);
+
+  // ✅ Pixel (já vai para principal + backup)
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'CompleteRegistration', {
+      content_name: 'Ativação de Cadastro',
+      content_category: 'Registration',
+      content_ids: [data.transacao || 'no-tx']
+    }, { eventID: regEventId });
+
+    fbq('trackCustom','Registration_Complete',{
+      customer_name: data.nome,
+      customer_email: data.email,
+      customer_phone: data.whatsapp,
+      registrationsource: 'landingpage',
+      timestamp: new Date().toISOString()
+    });
+
+    try { localStorage.setItem('last_event_id', regEventId); } catch(e){}
+  }
+
+  // ✅ CAPI
+  fetch("https://capi-api-ananda.onrender.com/event", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      event_name: "CompleteRegistration",
+      event_id: regEventId,
+      event_source_url: window.location.href,
+      user: {
+        name: localStorage.getItem("user_name") || data.nome,
+        email: localStorage.getItem("user_email") || data.email,
+        phone: localStorage.getItem("user_phone") || data.whatsapp,
+        fbp: localStorage.getItem("_fbp") || "",
+        fbc: localStorage.getItem("_fbc") || ""
+      },
+      custom_data: {
+        content_ids: [data.transacao || 'no-tx'],
+        content_name: "Ativação de Cadastro"
+      }
+    })
+  })
+  .then(r => r.json())
+  .then(j => console.log("📡 CAPI response:", j))
+  .catch(err => console.error("❌ Erro CAPI:", err));
+
+  // resto do fluxo (WhatsApp, redirect, etc.)
+  try {
+    if (typeof sendToServer === 'function') await sendToServer(data);
+    if (typeof sendToWhatsApp === 'function') await sendToWhatsApp(data);
+
+    showSuccessAndRedirect();
+  } catch(err) {
+    console.error(err);
+    notify('Erro ao processar cadastro. Tente novamente.', 'error');
+    if(btn){ btn.classList.remove('loading'); btn.disabled = false; }
+  }
+}
+
+  // garante que o form use essa função (caso a binding anterior existisse)
+  (function(){
+    const form = document.getElementById('registrationForm') || document.getElementById('cadastroForm') || document.querySelector('form');
+    if(form){
+      try { form.removeEventListener('submit', handleFormSubmit); } catch(e){}
+      form.addEventListener('submit', handleFormSubmit);
+    }
+  })();
+
+    async function sendToServer(payload){
+      // Simula uma chamada ao servidor; substitua pela sua API se desejar.
+      await new Promise(r=>setTimeout(r, 1500));
+    }
+
+    async function sendToWhatsApp(data){
+      const message = `🎉 - NOVO CADASTRO ATIVADO
+👤 Nome: ${data.nome}
+📧 Email: ${data.email}
+📱 WhatsApp: ${data.whatsapp}
+💳 Transação: ${data.transacao}
+⏰ Data/Hora: ${new Date().toLocaleString('pt-BR')}
+✅ Status: Cadastro ativado com sucesso!
+
+Enviado automaticamente pelo sistema `;
+      const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+      // Abra em nova aba (opcional): window.open(url, '_blank');
+      console.log('WhatsApp URL:', url);
+    }
+
+    function showSuccessAndRedirect(){
+      const btn = document.getElementById('submitBtn');
+      const check = document.getElementById('successCheckmark');
+      check.classList.add('show');
+      btn.classList.remove('loading');
+      btn.textContent = 'Cadastro ativado!';
+      btn.style.background = 'linear-gradient(45deg,#22c55e,#16a34a)';
+      const fill = document.getElementById('progress-fill');
+      const label = document.getElementById('progress-percent');
+      fill.style.width='100%'; label.textContent='100%';
+      fill.style.background='linear-gradient(90deg, #22c55e, #16a34a)';
+      notify('Cadastro ativado com sucesso! Redirecionando...', 'success');
+      setTimeout(()=>{ window.location.href = CONFIG.successPage; }, 3000);
+    }
+
+    function notify(message, type='info'){
+      const n = document.createElement('div');
+      n.className = 'notice';
+      n.style.background = type==='error' ? '#7a0912' : (type==='success' ? '#0e4223' : '#111826');
+      n.textContent = message;
+      document.body.appendChild(n);
+      setTimeout(()=>{
+        n.style.animation='slideOut .25s ease forwards';
+        setTimeout(()=>{ n.remove(); }, 260);
+      }, 4200);
+    }
+
+    // Anti-spam / cooldown
+    let submitAttempts = 0;
+    const maxAttempts = 3;
+    const cooldown = 60000;
+    function checkSubmissionRate(){
+      submitAttempts++;
+      if(submitAttempts>maxAttempts){
+        notify('Muitas tentativas. Aguarde 1 minuto.', 'error');
+        setTimeout(()=>{ submitAttempts = 0; }, cooldown);
+        return false;
+      }
+      return true;
+    }
+
+    // A/B Test simples
+    function initABTest(){
+      const variant = localStorage.getItem('ab_variant') || (Math.random()<0.5 ? 'A' : 'B');
+      localStorage.setItem('ab_variant', variant);
+
+    }
+
+    // Recovery de abandono / idle / exit-intent
+    function initAbandonmentRecovery(){
+      let started = false;
+      let idleTimer;
+      let exitShown = false;
+
+      const resetIdle = ()=>{
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(()=>{
+          if(started) showPopup('Você estava quase finalizando o cadastro. Complete agora e ative seu cadastro!');
+        }, 180000); // 3 min
+      };
+
+      document.querySelectorAll('.form-input').forEach(i=>{
+        i.addEventListener('focus', ()=>{
+          if(!started){
+            started = true;
+            if(typeof fbq!=='undefined') fbq('trackCustom','Form_Started');
+          }
+          resetIdle();
+        });
+        i.addEventListener('input', resetIdle);
+      });
+
+      let mouseY = 0;
+      document.addEventListener('mousemove', (e)=>{ mouseY = e.clientY; });
+      document.addEventListener('mouseleave', ()=>{
+        if(mouseY<80 && started && !exitShown){
+          exitShown = true;
+          showPopup('🚨 Espere!','Você está saindo sem finalizar! Complete seu cadastro!');
+        }
+      });
+
+      resetIdle();
+    }
+
+    function showPopup(title, text){
+      if(document.querySelector('.pop')) return;
+      const el = document.createElement('div');
+      el.className='pop';
+      el.innerHTML = `
+        <div class="pop-card">
+          <h3>${title}</h3>
+          <p>${text}</p>
+          <div class="actions">
+            <button class="final" id="finishNow">✅ Finalizar cadastro</button>
+            <button class="close" id="closePop">Fechar</button>
+          </div>
+        </div>`;
+      document.body.appendChild(el);
+      if (typeof fbq!=='undefined') fbq('trackCustom','FormAbandonmentAlert');
+      document.getElementById('closePop').onclick = ()=> el.remove();
+      document.getElementById('finishNow').onclick = ()=>{
+        el.remove();
+        document.getElementById('submitBtn').scrollIntoView({behavior:'smooth', block:'center'});
+      };
+      // Auto remove em 10s
+      setTimeout(()=>{ el.remove(); }, 10000);
+    }
+
+  </script>
+</body>
+</html>

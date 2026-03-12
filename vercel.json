@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/ativar_cadastro", "destination": "/ativar_cadastro.html" },
+    { "source": "/cadastro_confirmado", "destination": "/cadastro_confirmado.html" }
+  ],
+  "redirects": [
+    { "source": "/ativar_cadastro.html", "destination": "/ativar_cadastro", "permanent": true },
+    { "source": "/cadastro_confirmado.html", "destination": "/cadastro_confirmado", "permanent": true }
+  ]
+}
